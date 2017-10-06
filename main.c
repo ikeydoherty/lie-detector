@@ -20,44 +20,23 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-
 #include <stdio.h>
-#include <stdlib.h>
 
-const char a[] = { 0x41, 0x72, 0x65, 0x20, 0x79, 0x6f, 0x75, 0x20, 0x61,
-                   0x20, 0x6c, 0x69, 0x61, 0x72, 0x3f, 0x20, 0x0 };
-
-struct b {
-        short c;
-        const void *d;
-};
-
-static struct b f[] =
-    { { 0x79,
-        (const char[]){
-            0x45, 0x78, 0x61, 0x63, 0x74, 0x6c, 0x79, 0x2e, 0x0d, 0x0a, 0x0 } },
-      { 0x6E, (const char[]){ 0x4c, 0x69, 0x61, 0x72, 0x2e, 0x0d, 0x0a, 0x0 } },
-      {
-          0x0, (const char[]){ 0x44, 0x65, 0x6e, 0x69, 0x61, 0x6c, 0x20, 0x69, 0x73, 0x6e,
-                               0x27, 0x74, 0x20, 0x73, 0x6f, 0x20, 0x64, 0x69, 0x66, 0x66,
-                               0x65, 0x72, 0x65, 0x6e, 0x74, 0x20, 0x66, 0x72, 0x6f, 0x6d,
-                               0x20, 0x6c, 0x79, 0x69, 0x6e, 0x67, 0x0d, 0x0a, 0x0 },
-      } };
-
-int main(__attribute__((unused)) int argc, __attribute__((unused)) char **argv)
+main()
 {
-        fputs(a, stdout);
-        char c = getchar();
-
-        for (size_t i = 0; i < sizeof(f) / sizeof(struct b); i++) {
-                if (!f[i].c) {
-                        fputs(f[i].d, stdout);
-                        return 0;
-                }
-                if (c == f[i].c || (f[i].c & -33) == c) {
-                        fputs(f[i].d, stdout);
-                        return 0;
-                }
-        }
-        return 0;
+    int c;
+    printf("Are you a liar? \b ");
+    c = getchar();
+    if (c == 'y')  {
+            printf("Exactly.\n");
+    }
+    if (c == 'n')  {
+            printf("Liar. \n");
+    }
+    if (c == 'Y')  {
+            printf("Exactly.\n");
+    }
+    if (c == 'N')  {
+            printf("Liar.\n");
+    }
 }
